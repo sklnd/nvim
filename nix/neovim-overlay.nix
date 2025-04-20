@@ -50,11 +50,14 @@ with final.pkgs.lib; let
     gitsigns-nvim # https://github.com/lewis6991/gitsigns.nvim/
     vim-fugitive # https://github.com/tpope/vim-fugitive/
     # ^ git integration plugins
+
     # telescope and extensions
     telescope-nvim # https://github.com/nvim-telescope/telescope.nvim/
     telescope-fzy-native-nvim # https://github.com/nvim-telescope/telescope-fzy-native.nvim
+    telescope-project-nvim # https://github.com/nvim-telescope/telescope-project.nvim
     # telescope-smart-history-nvim # https://github.com/nvim-telescope/telescope-smart-history.nvim
     # ^ telescope and extensions
+
     # UI
     lualine-nvim # Status line | https://github.com/nvim-lualine/lualine.nvim/
     nvim-navic # Add LSP location to lualine | https://github.com/SmiteshP/nvim-navic

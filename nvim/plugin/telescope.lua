@@ -103,6 +103,9 @@ vim.keymap.set(
   builtin.lsp_dynamic_workspace_symbols,
   { desc = '[t]elescope lsp dynamic w[o]rkspace symbols' }
 )
+vim.keymap.set('n', '<leader>p', function()
+   require('telescope').extensions.project.project({})
+end, { desc = 'Telescope project picker' })
 
 telescope.setup {
   defaults = {
@@ -152,8 +155,19 @@ telescope.setup {
       override_generic_sorter = false,
       override_file_sorter = true,
     },
+    project = {
+      base_dirs = {{  max_depth = 2, path = "~/git"  }},
+      hidden_files = false,
+      on_project_selected = function(prompt_bufnr)
+        require("telescope._extensions.project.actions").change_working_directory(prompt_bufnr, false)
+      end,
+      sync_with_nvim_tree = true,
+      theme = "dropdown",
+    },
   },
 }
 
+
 telescope.load_extension('fzy_native')
+telescope.load_extension('project')
 -- telescope.load_extension('smart_history')
