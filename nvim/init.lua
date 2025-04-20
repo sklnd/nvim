@@ -14,7 +14,6 @@ local opt = vim.o
 opt.path = vim.o.path .. '**'
 
 opt.number = true
-opt.relativenumber = true
 opt.cursorline = true
 opt.lazyredraw = true
 opt.showmatch = true -- Highlight matching parentheses, etc
