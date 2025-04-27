@@ -46,6 +46,8 @@
           stylua
           luajitPackages.luacheck
           nvim-dev
+          basedpyright
+          python3
         ];
         shellHook = ''
           # symlink the .luarc.json generated in the overlay

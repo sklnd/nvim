@@ -69,7 +69,7 @@ local function fuzzy_grep_current_file_type()
   grep_current_file_type(fuzzy_grep)
 end
 
-vim.keymap.set('n', '<leader>tp', function()
+vim.keymap.set('n', '<C-p>', function()
   builtin.find_files()
 end, { desc = '[t]elescope find files - ctrl[p] style' })
 vim.keymap.set('n', '<M-p>', builtin.oldfiles, { desc = '[telescope] old files' })
