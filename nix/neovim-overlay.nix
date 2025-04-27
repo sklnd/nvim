@@ -45,6 +45,10 @@ with final.pkgs.lib; let
     cmp-cmdline-history # cmp command line history suggestions
     # ^ nvim-cmp extensions
 
+    # formatting
+    conform-nvim # LSP formatting plugin https://github.com/stevearc/conform.nvim
+    # ^ formatting
+
     # git integration plugins
     diffview-nvim # https://github.com/sindrets/diffview.nvim/
     neogit # https://github.com/TimUntersberger/neogit/
