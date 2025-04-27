@@ -70,6 +70,7 @@ with final.pkgs.lib; let
     nvim-treesitter-context # nvim-treesitter-context
     nvim-tree-lua # https://github.com/nvim-tree/nvim-tree.lua/
     toggleterm-nvim # https://github.com/akinsho/toggleterm.nvim/
+    trouble-nvim # A pretty list for trouble / quickfix /etx https://github.com/folke/trouble.nvim
     # ^ UI
 
     # language support
