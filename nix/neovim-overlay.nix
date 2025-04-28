@@ -112,6 +112,7 @@ with final.pkgs.lib; let
     nil # nix LSP
     basedpyright # python LSP
     python3
+    typescript-language-server
   ];
 in {
   # This is the neovim derivation

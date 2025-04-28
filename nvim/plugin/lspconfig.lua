@@ -1,12 +1,14 @@
 local lspconfig = require('lspconfig')
 local navic = require('nvim-navic')
 
+-- Avoid attaching a lsp to navic that doesn't have required features
 local on_attach = function(client, bufnr)
   if client.server_capabilities.documentSymbolProvider then
     navic.attach(client, bufnr)
   end
 end
 
+-- python
 lspconfig.basedpyright.setup {
   on_attach = on_attach,
   settings = {
@@ -43,3 +45,47 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
   desc = 'LSP: Disable hover capability from Ruff',
 })
+
+-- typescript
+lspconfig.ts_ls.setup {
+  filetypes = {
+    'javascript',
+    'javascriptreact',
+    'javascript.jsx',
+    'typescript',
+    'typescriptreact',
+    'typescript.tsx',
+  },
+
+  settings = {
+    typescript = {
+      inlayHints = {
+        includeInlayParameterNameHints = 'all', -- 'none' | 'literals' | 'all'
+        includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+        includeInlayVariableTypeHints = true,
+        includeInlayFunctionParameterTypeHints = true,
+        includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+        includeInlayPropertyDeclarationTypeHints = true,
+        includeInlayFunctionLikeReturnTypeHints = true,
+        includeInlayEnumMemberValueHints = true,
+      },
+    },
+    javascript = {
+      inlayHints = {
+        includeInlayParameterNameHints = 'all', -- 'none' | 'literals' | 'all'
+        includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+        includeInlayVariableTypeHints = true,
+
+        includeInlayFunctionParameterTypeHints = true,
+        includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+        includeInlayPropertyDeclarationTypeHints = true,
+        includeInlayFunctionLikeReturnTypeHints = true,
+        includeInlayEnumMemberValueHints = true,
+      },
+    },
+  },
+}
+
+vim.keymap.set('n', '<leader>i', function()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { 0 }, { 0 })
+end)

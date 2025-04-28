@@ -48,6 +48,7 @@
           nvim-dev
           basedpyright
           python3
+          typescript-language-server
         ];
         shellHook = ''
           # symlink the .luarc.json generated in the overlay
