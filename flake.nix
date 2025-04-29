@@ -1,5 +1,5 @@
 {
-  description = "Neovim derivation";
+  description = "skldn's neovim derivation";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
