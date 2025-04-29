@@ -9,16 +9,7 @@ local actions = require('telescope.actions')
 local builtin = require('telescope.builtin')
 
 local layout_config = {
-  vertical = {
-    width = function(_, max_columns)
-      return math.floor(max_columns * 0.99)
-    end,
-    height = function(_, _, max_lines)
-      return math.floor(max_lines * 0.99)
-    end,
-    prompt_position = 'bottom',
-    preview_cutoff = 0,
-  },
+  horizontal = {},
 }
 
 -- Fall back to find_files if not in a git repo
@@ -104,7 +95,7 @@ vim.keymap.set(
   { desc = '[t]elescope lsp dynamic w[o]rkspace symbols' }
 )
 vim.keymap.set('n', '<leader>p', function()
-   require('telescope').extensions.project.project({})
+  require('telescope').extensions.project.project {}
 end, { desc = 'Telescope project picker' })
 
 telescope.setup {
@@ -112,7 +103,7 @@ telescope.setup {
     path_display = {
       'truncate',
     },
-    layout_strategy = 'vertical',
+    layout_strategy = 'horizontal',
     layout_config = layout_config,
     mappings = {
       i = {
@@ -149,6 +140,7 @@ telescope.setup {
       '--column',
       '--smart-case',
     },
+    file_ignore_patterns = { 'node_modules', 'dist/' },
   },
   extensions = {
     fzy_native = {
@@ -156,17 +148,16 @@ telescope.setup {
       override_file_sorter = true,
     },
     project = {
-      base_dirs = {{  max_depth = 2, path = "~/git"  }},
+      base_dirs = { { max_depth = 2, path = '~/git' } },
       hidden_files = false,
       on_project_selected = function(prompt_bufnr)
-        require("telescope._extensions.project.actions").change_working_directory(prompt_bufnr, false)
+        require('telescope._extensions.project.actions').change_working_directory(prompt_bufnr, false)
       end,
       sync_with_nvim_tree = true,
-      theme = "dropdown",
+      theme = 'dropdown',
     },
   },
 }
-
 
 telescope.load_extension('fzy_native')
 telescope.load_extension('project')
