@@ -48,6 +48,7 @@ with final.pkgs.lib; let
 
     # formatting
     conform-nvim # LSP formatting plugin https://github.com/stevearc/conform.nvim
+    comment-nvim # multi-lang comment support https://github.com/numToStr/Comment.nvim
     # ^ formatting
 
     # git integration plugins
