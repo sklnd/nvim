@@ -33,6 +33,8 @@ with final.pkgs.lib; let
     nvim-treesitter.withAllGrammars
     nvim-lspconfig
     luasnip # snippets | https://github.com/l3mon4d3/luasnip/
+    oil-nvim
+
     # nvim-cmp (autocompletion) and extensions
     nvim-cmp # https://github.com/hrsh7th/nvim-cmp
     cmp_luasnip # snippets autocompletion extension for nvim-cmp | https://github.com/saadparwaiz1/cmp_luasnip/
