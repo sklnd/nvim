@@ -76,6 +76,7 @@ vim.keymap.set(
 )
 vim.keymap.set('n', '<leader>*', builtin.grep_string, { desc = '[telescope] grep current string [*]' })
 vim.keymap.set('n', '<leader>tg', project_files, { desc = '[t]elescope project files [g]' })
+vim.keymap.set('n', '<leader>th', builtin.help_tags, { desc = '[t]elescope [h]elp tags' })
 vim.keymap.set('n', '<leader>tc', builtin.quickfix, { desc = '[t]elescope quickfix list [c]' })
 vim.keymap.set('n', '<leader>tq', builtin.command_history, { desc = '[t]elescope command history [q]' })
 vim.keymap.set('n', '<leader>tl', builtin.loclist, { desc = '[t]elescope [l]oclist' })
