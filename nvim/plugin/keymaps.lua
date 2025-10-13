@@ -92,24 +92,11 @@ set('n', ']l', lright, { silent = true, desc = 'cycle [l]oclist right' })
 set('n', '[L', vim.cmd.lfirst, { silent = true, desc = 'first [L]oclist entry' })
 set('n', ']L', vim.cmd.llast, { silent = true, desc = 'last [L]oclist entry' })
 
--- Resize vertical splits
-local toIntegral = math.ceil
-set('n', '<leader>w+', function()
-  local curWinWidth = api.nvim_win_get_width(0)
-  api.nvim_win_set_width(0, toIntegral(curWinWidth * 3 / 2))
-end, { silent = true, desc = 'inc window [w]idth' })
-set('n', '<leader>w-', function()
-  local curWinWidth = api.nvim_win_get_width(0)
-  api.nvim_win_set_width(0, toIntegral(curWinWidth * 2 / 3))
-end, { silent = true, desc = 'dec window [w]idth' })
-set('n', '<leader>h+', function()
-  local curWinHeight = api.nvim_win_get_height(0)
-  api.nvim_win_set_height(0, toIntegral(curWinHeight * 3 / 2))
-end, { silent = true, desc = 'inc window [h]eight' })
-set('n', '<leader>h-', function()
-  local curWinHeight = api.nvim_win_get_height(0)
-  api.nvim_win_set_height(0, toIntegral(curWinHeight * 2 / 3))
-end, { silent = true, desc = 'dec window [h]eight' })
+-- Resize splits
+set('n', '<M-Right>', '<c-w>5<')
+set('n', '<M-Left>', '<c-w>5>')
+set('n', '<M-Up>', '<c-w>+')
+set('n', '<M-Down>', '<c-w>->')
 
 -- Close floating windows [Neovim 0.10 and above]
 set('n', '<leader>fq', function()
