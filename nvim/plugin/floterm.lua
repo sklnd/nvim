@@ -45,9 +45,6 @@ local function create_floating_window(opts)
   -- Enter insert mode automatically
   vim.cmd('startinsert')
 
-  -- Optional: close on <Esc>
-  vim.keymap.set('t', '<Esc>', [[<C-\><C-n>:close<CR>]], { buffer = buf })
-
   return { buf = buf, win = win }
 end
 
