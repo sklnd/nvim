@@ -15,12 +15,12 @@ local function preview_location_callback(_, result)
 end
 
 local function peek_definition()
-  local params = vim.lsp.util.make_position_params()
+  local params = vim.lsp.util.make_position_params(0, 'utf-8')
   return vim.lsp.buf_request(0, 'textDocument/definition', params, preview_location_callback)
 end
 
 local function peek_type_definition()
-  local params = vim.lsp.util.make_position_params()
+  local params = vim.lsp.util.make_position_params(0, 'utf-8')
   return vim.lsp.buf_request(0, 'textDocument/typeDefinition', params, preview_location_callback)
 end
 
@@ -29,6 +29,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', { clear = true }),
   callback = function(ev)
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    if not client then
+      return
+    end
+
     local bufnr = ev.buf
 
     -- Navic support
@@ -76,7 +80,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     keymap.set('n', '<space>f', function()
       vim.lsp.buf.format { async = true }
     end, desc('[lsp] [f]ormat buffer'))
-    
+
     if client and client.server_capabilities.inlayHintProvider then
       keymap.set('n', '<space>h', function()
         local current_setting = vim.lsp.inlay_hint.is_enabled { bufnr = bufnr }
@@ -101,7 +105,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 -- Toggle inlay hints keymap (global)
 vim.keymap.set('n', '<leader>i', function()
-  local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = 0 })
+  local enabled = vim.lsp.inlay_hint.is_enabled { bufnr = 0 }
   vim.lsp.inlay_hint.enable(not enabled, { bufnr = 0 })
 end)
 
