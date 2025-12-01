@@ -4,9 +4,9 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = 'python',
   callback = function()
     local root_dir = vim.fs.root(0, { 'pyproject.toml', 'setup.py', '.git', 'requirements.txt' })
-    
+
     -- basedpyright
-    vim.lsp.start({
+    vim.lsp.start {
       name = 'basedpyright',
       cmd = { 'basedpyright-langserver', '--stdio' },
       root_dir = root_dir,
@@ -22,10 +22,10 @@ vim.api.nvim_create_autocmd('FileType', {
           },
         },
       },
-    })
+    }
 
     -- ruff
-    vim.lsp.start({
+    vim.lsp.start {
       name = 'ruff',
       cmd = { 'ruff', 'server' },
       root_dir = root_dir,
@@ -33,6 +33,6 @@ vim.api.nvim_create_autocmd('FileType', {
       init_options = {
         settings = {},
       },
-    })
+    }
   end,
 })

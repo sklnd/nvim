@@ -10,8 +10,7 @@ local luasnip = require('luasnip')
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
 local function has_words_before()
-  local unpack_ = unpack or table.unpack
-  local line, col = unpack_(vim.api.nvim_win_get_cursor(0))
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
 end
 
@@ -33,8 +32,12 @@ cmp.setup {
     format = lspkind.cmp_format {
       mode = 'symbol_text',
       with_text = true,
-      maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-      ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+      -- prevent the popup from showing more than provided characters
+      -- (e.g 50 will not show more than 50 characters)
+      maxwidth = 50,
+      -- when popup menu exceed maxwidth, the truncated part would show
+      -- ellipsis_char instead (must define maxwidth first)
+      ellipsis_char = '...',
 
       menu = {
         buffer = '[BUF]',

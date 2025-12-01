@@ -15,7 +15,6 @@
   };
 
   outputs = inputs @ {
-    self,
     nixpkgs,
     flake-utils,
     ...
@@ -45,6 +44,10 @@
           nil
           stylua
           luajitPackages.luacheck
+          alejandra
+          statix
+          deadnix
+          treefmt
           nvim-dev
           basedpyright
           python3
@@ -56,8 +59,14 @@
           # allow quick iteration of lua configs
           ln -Tfns $PWD/nvim ~/.config/nvim-dev
         '';
-        LOCALE_ARCHIVE = if pkgs.stdenv.isLinux then "${pkgs.glibcLocales}/lib/locale/locale-archive" else "";
-        LC_ALL = if pkgs.stdenv.isLinux then "en_US.utf8" else "en_US.UTF-8" ;
+        LOCALE_ARCHIVE =
+          if pkgs.stdenv.isLinux
+          then "${pkgs.glibcLocales}/lib/locale/locale-archive"
+          else "";
+        LC_ALL =
+          if pkgs.stdenv.isLinux
+          then "en_US.utf8"
+          else "en_US.UTF-8";
       };
     in {
       packages = rec {

@@ -4,8 +4,8 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' },
   callback = function()
     local root_dir = vim.fs.root(0, { 'tsconfig.json', 'package.json', 'jsconfig.json', '.git' })
-    
-    vim.lsp.start({
+
+    vim.lsp.start {
       name = 'ts_ls',
       cmd = { 'typescript-language-server', '--stdio' },
       root_dir = root_dir,
@@ -36,6 +36,6 @@ vim.api.nvim_create_autocmd('FileType', {
           },
         },
       },
-    })
+    }
   end,
 })

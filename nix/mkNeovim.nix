@@ -25,8 +25,8 @@ with lib;
     # The below arguments can typically be left as their defaults
     # Additional lua packages (not plugins), e.g. from luarocks.org.
     # e.g. p: [p.jsregexp]
-    extraLuaPackages ? p: [],
-    extraPython3Packages ? p: [], # Additional python 3 packages
+    extraLuaPackages ? _: [],
+    extraPython3Packages ? _: [], # Additional python 3 packages
     withPython3 ? true, # Build Neovim with Python 3 support?
     withRuby ? false, # Build Neovim with Ruby support?
     withNodeJs ? false, # Build Neovim with NodeJS support?
@@ -78,7 +78,7 @@ with lib;
       lib.cleanSourceWith {
         inherit src;
         name = "nvim-rtp-src";
-        filter = path: tyoe: let
+        filter = path: _type: let
           srcPrefix = toString src + "/";
           relPath = lib.removePrefix srcPrefix (toString path);
         in
@@ -196,7 +196,7 @@ with lib;
           + extraMakeWrapperLuaCArgs
           + " "
           + extraMakeWrapperLuaArgs;
-        wrapRc = wrapRc;
+        inherit wrapRc;
       });
 
     isCustomAppName = appName != null && appName != "nvim";
@@ -208,8 +208,8 @@ with lib;
         + lib.optionalString isCustomAppName ''
           mv $out/bin/nvim $out/bin/${lib.escapeShellArg appName}
         '';
-      meta.mainProgram 
-        = if isCustomAppName 
-            then appName 
-            else oa.meta.mainProgram;
+      meta.mainProgram =
+        if isCustomAppName
+        then appName
+        else oa.meta.mainProgram;
     })

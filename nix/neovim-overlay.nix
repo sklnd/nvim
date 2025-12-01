@@ -1,17 +1,14 @@
 # This overlay, when applied to nixpkgs, adds the final neovim derivation to nixpkgs.
-{ inputs }:
-final: prev:
-with final.pkgs.lib;
-let
+{inputs}: final: _prev:
+with final.pkgs.lib; let
   pkgs = final;
 
   # Use this to create a plugin from a flake input
-  mkNvimPlugin =
-    src: pname:
-    pkgs.vimUtils.buildVimPlugin {
-      inherit pname src;
-      version = src.lastModifiedDate;
-    };
+  # mkNvimPlugin = src: pname:
+  #   pkgs.vimUtils.buildVimPlugin {
+  #     inherit pname src;
+  #     version = src.lastModifiedDate;
+  #   };
 
   # Make sure we use the pinned nixpkgs instance for wrapNeovimUnstable,
   # otherwise it could have an incompatible signature when applying this overlay.
@@ -122,8 +119,7 @@ let
     python3
     typescript-language-server
   ];
-in
-{
+in {
   # This is the neovim derivation
   # returned by the overlay
   nvim-pkg = mkNeovim {

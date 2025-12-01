@@ -22,7 +22,7 @@ local function create_floating_window(opts)
   local col = math.floor((ui.width - width) / 2)
 
   -- Create a new empty buffer (no file, scratch)
-  local buf = nil
+  local buf
   if vim.api.nvim_buf_is_valid(opts.buf) then
     buf = opts.buf
   else
