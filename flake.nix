@@ -55,6 +55,9 @@
           ln -fs ${pkgs.nvim-luarc-json} .luarc.json
           # allow quick iteration of lua configs
           ln -Tfns $PWD/nvim ~/.config/nvim-dev
+
+          # Setup global cspell configuration via symlinks
+          ln -sf ${pkgs.cspell-config} ~/.config/cspell.json
         '';
         LOCALE_ARCHIVE = if pkgs.stdenv.isLinux then "${pkgs.glibcLocales}/lib/locale/locale-archive" else "";
         LC_ALL = if pkgs.stdenv.isLinux then "en_US.utf8" else "en_US.UTF-8" ;
