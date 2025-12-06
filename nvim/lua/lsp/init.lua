@@ -112,5 +112,6 @@ end)
 -- Load language configurations
 require('lsp.python')
 require('lsp.typescript')
+require('lsp.thrift')
 
 return M
