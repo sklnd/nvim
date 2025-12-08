@@ -1,6 +1,8 @@
 # This overlay, when applied to nixpkgs, adds the final neovim derivation to nixpkgs.
-{inputs}: final: _prev:
-with final.pkgs.lib; let
+{ inputs }:
+final: _prev:
+with final.pkgs.lib;
+let
   pkgs = final;
 
   # Use this to create a plugin from a flake input
@@ -71,7 +73,6 @@ with final.pkgs.lib; let
     nvim-navic # Add LSP location to lualine | https://github.com/SmiteshP/nvim-navic
     statuscol-nvim # Status column | https://github.com/luukvbaal/statuscol.nvim/
     nvim-treesitter-context # nvim-treesitter-context
-    nvim-tree-lua # https://github.com/nvim-tree/nvim-tree.lua/
     toggleterm-nvim # https://github.com/akinsho/toggleterm.nvim/
     trouble-nvim # A pretty list for trouble / quickfix /etx https://github.com/folke/trouble.nvim
     # ^ UI
@@ -119,7 +120,8 @@ with final.pkgs.lib; let
     python3
     typescript-language-server
   ];
-in {
+in
+{
   # This is the neovim derivation
   # returned by the overlay
   nvim-pkg = mkNeovim {
