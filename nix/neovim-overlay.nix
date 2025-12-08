@@ -79,6 +79,7 @@ let
     # ^ UI
 
     # language support
+    rustaceanvim # Rust language support https://github.com/mrcjkb/rustaceanvim
     # ^ language support
 
     # navigation/editing enhancement plugins
@@ -120,6 +121,7 @@ let
     basedpyright # python LSP
     python3
     typescript-language-server
+    rust-analyzer
   ];
 in
 {
