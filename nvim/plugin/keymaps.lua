@@ -184,6 +184,8 @@ set('n', '<C-b>', '<C-b>zz', { desc = 'move UP full-page and center' })
 set('n', '<leader>x', '<cmd>.lua<CR>', { desc = 'execute the current line' })
 set('n', '<leader><leader>x', '<cmd>source %<CR>', { desc = 'execute the current file' })
 
+set('n', '<leader>-', ':Oil<CR>', { desc = 'Open parent directory in oil' })
+
 -- Disabled keymaps [enable at your own risk]
 
 -- Automatic management of search highlight
