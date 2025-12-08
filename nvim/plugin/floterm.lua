@@ -61,6 +61,6 @@ local function toggle()
 end
 
 vim.api.nvim_create_user_command('Floterm', toggle, {})
-vim.keymap.set({ 'n', 't' }, '<leader>tt', toggle, { desc = 'Toggle floating terminal' })
+vim.keymap.set({ 'n' }, '<leader>tt', toggle, { desc = 'Toggle floating terminal' })
 
 return M
