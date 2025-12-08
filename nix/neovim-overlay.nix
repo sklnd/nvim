@@ -75,6 +75,7 @@ let
     nvim-treesitter-context # nvim-treesitter-context
     toggleterm-nvim # https://github.com/akinsho/toggleterm.nvim/
     trouble-nvim # A pretty list for trouble / quickfix /etx https://github.com/folke/trouble.nvim
+    fidget-nvim # UI showing lsp progrss https://github.com/j-hui/fidget.nvim
     # ^ UI
 
     # language support
