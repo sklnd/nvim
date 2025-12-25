@@ -36,7 +36,11 @@ let
     luasnip # snippets | https://github.com/l3mon4d3/luasnip/
     oil-nvim
 
+    # Completion
     blink-cmp # https://github.com/Saghen/blink.cmp
+
+    # Misc
+    snacks-nvim # https://github.com/folke/snacks.nvim
 
     # formatting
     conform-nvim # LSP formatting plugin https://github.com/stevearc/conform.nvim
