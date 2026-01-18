@@ -32,6 +32,13 @@ vim.api.nvim_create_autocmd('BufEnter', {
   end,
 })
 
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'gitcommit', 'gitrebase', 'gitconfig' },
+  callback = function()
+    vim.opt_local.bufhidden = 'delete'
+  end,
+})
+
 -- More examples, disabled by default
 
 -- Toggle between relative/absolute line numbers
