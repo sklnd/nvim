@@ -1,4 +1,38 @@
-require('toggleterm').setup {}
+local toggleterm = require('toggleterm')
+toggleterm.setup {
+  env = {
+    NVIM = vim.NIL,
+  },
+}
 
-vim.keymap.set({ 'n', 'i' }, '<C-`>', ':ToggleTerm<CR>', { noremap = true, silent = true })
-vim.keymap.set({ 't' }, '<C-`>', '<C-\\><C-n>:ToggleTerm<CR>', { noremap = true, silent = true })
+local function term_toggle(direction)
+  return function()
+    local size
+    if direction == 'vertical' then
+      local vim_width = vim.o.columns
+      size = math.min(80, vim_width)
+    end
+
+    if direction == 'horizontal' then
+      local vim_height = vim.o.lines
+      size = math.min(20, vim_height)
+    end
+
+    require('toggleterm').toggle(nil, size, nil, direction)
+  end
+end
+
+vim.keymap.set({ 'n', 'i' }, '<C-`>', term_toggle('horizontal'), { noremap = true, silent = true })
+vim.keymap.set({ 't' }, '<C-`>', term_toggle('horizontal'), { noremap = true, silent = true })
+vim.keymap.set(
+  { 'n' },
+  '<leader>tv',
+  term_toggle('vertical'),
+  { noremap = true, silent = true, desc = 'Toggle vertical terminal' }
+)
+vim.keymap.set(
+  { 'n' },
+  '<leader>ts',
+  term_toggle('horizontal'),
+  { noremap = true, silent = true, desc = 'Toggle horizontal terminal' }
+)
