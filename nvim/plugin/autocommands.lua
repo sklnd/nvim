@@ -33,7 +33,7 @@ vim.api.nvim_create_autocmd('BufEnter', {
 })
 
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'gitcommit', 'gitrebase', 'gitconfig' },
+  pattern = { 'gitcommit', 'gitrebase', 'gitconfig', 'jjdescription' },
   callback = function()
     vim.opt_local.bufhidden = 'delete'
   end,

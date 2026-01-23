@@ -1,9 +1,4 @@
 local toggleterm = require('toggleterm')
-toggleterm.setup {
-  env = {
-    NVIM = vim.NIL,
-  },
-}
 
 local function term_toggle(direction)
   return function()
@@ -18,7 +13,7 @@ local function term_toggle(direction)
       size = math.min(20, vim_height)
     end
 
-    require('toggleterm').toggle(nil, size, nil, direction)
+    toggleterm.toggle(nil, size, nil, direction)
   end
 end
 

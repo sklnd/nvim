@@ -85,6 +85,10 @@ vim.diagnostic.config {
   },
 }
 
+if vim.fn.has('nvim') == 1 then
+  vim.env.JJ_EDITOR = 'nvr -cc split --remote-wait'
+end
+
 -- Native plugins
 cmd.filetype('plugin', 'indent', 'on')
 cmd.packadd('cfilter') -- Allows filtering the quickfix list with :cfdo
