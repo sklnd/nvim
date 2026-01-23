@@ -53,8 +53,20 @@ local function toggle()
     state.floating = create_floating_window { buf = state.floating.buf }
     -- Start a terminal in the buffer if we don't already have one
     if vim.bo[state.floating.buf].buftype ~= 'terminal' then
-      vim.cmd.term()
+      vim.fn.jobstart(vim.o.shell, {
+        term = true,
+      })
     end
+
+    -- Auto-hide floating terminal when leaving it (e.g., when nvr opens a file)
+    vim.api.nvim_create_autocmd('WinLeave', {
+      buffer = state.floating.buf,
+      callback = function()
+        if vim.api.nvim_win_is_valid(state.floating.win) then
+          vim.api.nvim_win_hide(state.floating.win)
+        end
+      end,
+    })
   else
     vim.api.nvim_win_hide(state.floating.win)
   end
