@@ -96,7 +96,7 @@ with final.pkgs.lib; let
     which-key-nvim
 
     # Theme
-    catppuccin-nvim
+    dracula-nvim
 
     # Big fancy stuff
     codecompanion-nvim
