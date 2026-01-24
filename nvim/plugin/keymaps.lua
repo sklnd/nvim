@@ -107,6 +107,12 @@ end, { silent = true, desc = '[f]loating windows: [q]uit/close all' })
 set('t', '<Esc>', '<C-\\><C-n>', { desc = 'switch to normal mode' })
 set('t', '<C-Esc>', '<Esc>', { desc = 'send Esc to terminal' })
 
+-- Remap C-w for movement in terminal mode
+set('t', '<C-w>h', '<C-\\><C-n><C-w>h')
+set('t', '<C-w>j', '<C-\\><C-n><C-w>j')
+set('t', '<C-w>k', '<C-\\><C-n><C-w>k')
+set('t', '<C-w>l', '<C-\\><C-n><C-w>l')
+
 -- Shortcut for expanding to current buffer's directory in command mode
 set('c', '%%', function()
   if fn.getcmdtype() == ':' then
