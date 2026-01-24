@@ -40,6 +40,20 @@ local toggleterm = {
   filetypes = { 'toggleterm' },
 }
 
+--- A cond function that determines if we want to show the current filename
+local filter_non_files = function()
+  local hide_filetypes = {
+    'terminal',
+    'jjdescription',
+  }
+  for _, hide_filetype in pairs(hide_filetypes) do
+    if vim.bo.buftype == hide_filetype then
+      return false
+    end
+  end
+  return true
+end
+
 require('lualine').setup {
   globalstatus = true,
   sections = {
@@ -61,18 +75,7 @@ require('lualine').setup {
         file_status = true,
         newfile_status = true,
         -- avoid showing weird filenames when we're in a term
-        cond = function()
-          local hide_filetypes = {
-            'terminal',
-            'jjdescription',
-          }
-          for _, hide_filetype in hide_filetypes do
-            if vim.bo.buftype == hide_filetype then
-              return true
-            end
-          end
-          return false
-        end,
+        cond = filter_non_files,
       },
       {},
     },
