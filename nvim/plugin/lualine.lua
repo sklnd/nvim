@@ -30,12 +30,21 @@ local function extra_mode_status()
   return ''
 end
 
+-- The default toggleterm plugin stomps on mode
+local toggleterm = {
+  sections = { lualine_a = { 'mode' }, lualine_b = {
+    function()
+      return 'Terminal'
+    end,
+  } },
+  filetypes = { 'toggleterm' },
+}
+
 require('lualine').setup {
   globalstatus = true,
   sections = {
-    lualine_c = {
-      { 'navic' },
-    },
+    lualine_a = { 'mode' },
+    lualine_b = { 'diff' },
     lualine_z = {
       -- (see above)
       { extra_mode_status },
@@ -45,14 +54,29 @@ require('lualine').setup {
     theme = 'auto',
   },
   winbar = {
-    lualine_z = {
+    lualine_a = {
       {
         'filename',
         path = 1,
         file_status = true,
         newfile_status = true,
+        -- avoid showing weird filenames when we're in a term
+        cond = function()
+          local hide_filetypes = {
+            'terminal',
+            'jjdescription',
+          }
+          for _, hide_filetype in hide_filetypes do
+            if vim.bo.buftype == hide_filetype then
+              return true
+            end
+          end
+          return false
+        end,
       },
+      {},
     },
+    lualine_c = { 'navic' },
   },
-  extensions = { 'fugitive', 'fzf', 'toggleterm', 'quickfix' },
+  extensions = { 'fugitive', 'fzf', toggleterm, 'quickfix' },
 }
