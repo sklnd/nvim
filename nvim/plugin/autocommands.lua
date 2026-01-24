@@ -32,10 +32,30 @@ vim.api.nvim_create_autocmd('BufEnter', {
   end,
 })
 
+-- Remove old git/jj buffers
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'gitcommit', 'gitrebase', 'gitconfig', 'jjdescription' },
   callback = function()
     vim.opt_local.bufhidden = 'delete'
+  end,
+})
+
+-- Auto-reload files when they change on disk
+local autoreload_group = api.nvim_create_augroup('autoreload', { clear = true })
+api.nvim_create_autocmd({ 'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI' }, {
+  group = autoreload_group,
+  callback = function()
+    if vim.fn.mode() ~= 'c' then
+      vim.cmd.checktime()
+    end
+  end,
+})
+
+-- Notification after file change
+api.nvim_create_autocmd('FileChangedShellPost', {
+  group = autoreload_group,
+  callback = function()
+    vim.notify('File changed on disk. Buffer reloaded.', vim.log.levels.WARN)
   end,
 })
 

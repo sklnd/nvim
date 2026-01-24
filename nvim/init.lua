@@ -34,6 +34,9 @@ opt.splitright = true
 opt.splitbelow = true
 opt.cmdheight = 0
 
+-- Automatically reload files changed outside of vim
+opt.autoread = true
+
 opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 opt.colorcolumn = '100'
 
