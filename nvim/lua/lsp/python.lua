@@ -19,6 +19,18 @@ vim.api.nvim_create_autocmd('FileType', {
             inlayHints = {
               genericTypes = true,
             },
+            diagnosticSeverityOverrides = {
+              reportAny = 'hint',
+              reportExplicitAny = 'hint',
+              reportImplicitStringConcatenation = 'hint',
+              reportPrivateImportUsage = 'hint',
+              reportPrivateUsage = 'hint',
+              reportUnannotatedClassAttribute = 'none',
+              reportUnknownArgumentType = 'none',
+              reportUnknownMemberType = 'none',
+              reportUnknownVariableType = 'none',
+              reportUnusedCallResult = 'none',
+            },
           },
         },
       },
