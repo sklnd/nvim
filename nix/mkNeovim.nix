@@ -66,7 +66,14 @@ with lib;
     # This nixpkgs util function creates an attrset
     # that pkgs.wrapNeovimUnstable uses to configure the Neovim build.
     neovimConfig = neovimUtils.makeNeovimConfig {
-      inherit extraPython3Packages withPython3 withRuby withNodeJs viAlias vimAlias;
+      inherit
+        extraPython3Packages
+        withPython3
+        withRuby
+        withNodeJs
+        viAlias
+        vimAlias
+        ;
       plugins = normalizedPlugins;
     };
 
@@ -133,9 +140,7 @@ with lib;
           local dev_plugins_dir = dev_pack_path .. '/opt'
           local dev_plugin_path
         ''
-        + strings.concatMapStringsSep
-        "\n"
-        (plugin: ''
+        + strings.concatMapStringsSep "\n" (plugin: ''
           dev_plugin_path = dev_plugins_dir .. '/${plugin.name}'
           if vim.fn.empty(vim.fn.glob(dev_plugin_path)) > 0 then
             vim.notify('Bootstrapping dev plugin ${plugin.name} ...', vim.log.levels.INFO)
@@ -158,17 +163,15 @@ with lib;
     # Add arguments to the Neovim wrapper script
     extraMakeWrapperArgs = builtins.concatStringsSep " " (
       # Set the NVIM_APPNAME environment variable
-      (optional (appName != "nvim" && appName != null && appName != "")
-        ''--set NVIM_APPNAME "${appName}"'')
+      (optional (
+        appName != "nvim" && appName != null && appName != ""
+      ) ''--set NVIM_APPNAME "${appName}"'')
       # Add external packages to the PATH
-      ++ (optional (externalPackages != [])
-        ''--prefix PATH : "${makeBinPath externalPackages}"'')
+      ++ (optional (externalPackages != []) ''--prefix PATH : "${makeBinPath externalPackages}"'')
       # Set the LIBSQLITE_CLIB_PATH if sqlite is enabled
-      ++ (optional withSqlite
-        ''--set LIBSQLITE_CLIB_PATH "${sqlite.out}/lib/libsqlite3.so"'')
+      ++ (optional withSqlite ''--set LIBSQLITE_CLIB_PATH "${sqlite.out}/lib/libsqlite3.so"'')
       # Set the LIBSQLITE environment variable if sqlite is enabled
-      ++ (optional withSqlite
-        ''--set LIBSQLITE "${sqlite.out}/lib/libsqlite3.so"'')
+      ++ (optional withSqlite ''--set LIBSQLITE "${sqlite.out}/lib/libsqlite3.so"'')
     );
 
     luaPackages = neovim-unwrapped.lua.pkgs;
@@ -177,15 +180,20 @@ with lib;
     # Native Lua libraries
     extraMakeWrapperLuaCArgs =
       optionalString (resolvedExtraLuaPackages != [])
-      ''--suffix LUA_CPATH ";" "${concatMapStringsSep ";" luaPackages.getLuaCPath resolvedExtraLuaPackages}"'';
+      ''--suffix LUA_CPATH ";" "${
+          concatMapStringsSep ";" luaPackages.getLuaCPath resolvedExtraLuaPackages
+        }"'';
 
     # Lua libraries
     extraMakeWrapperLuaArgs =
       optionalString (resolvedExtraLuaPackages != [])
-      ''--suffix LUA_PATH ";" "${concatMapStringsSep ";" luaPackages.getLuaPath resolvedExtraLuaPackages}"'';
+      ''--suffix LUA_PATH ";" "${
+          concatMapStringsSep ";" luaPackages.getLuaPath resolvedExtraLuaPackages
+        }"'';
 
     # wrapNeovimUnstable is the nixpkgs utility function for building a Neovim derivation.
-    neovim-wrapped = wrapNeovimUnstable neovim-unwrapped (neovimConfig
+    neovim-wrapped = wrapNeovimUnstable neovim-unwrapped (
+      neovimConfig
       // {
         luaRcContent = initLua;
         wrapperArgs =
@@ -197,7 +205,8 @@ with lib;
           + " "
           + extraMakeWrapperLuaArgs;
         inherit wrapRc;
-      });
+      }
+    );
 
     isCustomAppName = appName != null && appName != "nvim";
   in
