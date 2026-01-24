@@ -81,8 +81,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.lsp.buf.format { async = true }
     end, desc('[lsp] [f]ormat buffer'))
 
+    -- Inlay hints on by default, with toggle
     if client and client.server_capabilities.inlayHintProvider then
-      keymap.set('n', '<space>h', function()
+      vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+      keymap.set('n', '<leader>h', function()
         local current_setting = vim.lsp.inlay_hint.is_enabled { bufnr = bufnr }
         vim.lsp.inlay_hint.enable(not current_setting, { bufnr = bufnr })
       end, desc('[lsp] toggle inlay hints'))
@@ -102,12 +104,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
   end,
 })
-
--- Toggle inlay hints keymap (global)
-vim.keymap.set('n', '<leader>i', function()
-  local enabled = vim.lsp.inlay_hint.is_enabled { bufnr = 0 }
-  vim.lsp.inlay_hint.enable(not enabled, { bufnr = 0 })
-end)
 
 -- Load language configurations
 require('lsp.python')
