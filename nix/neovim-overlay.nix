@@ -60,6 +60,8 @@ with final.pkgs.lib; let
     # UI
     lualine-nvim # Status line | https://github.com/nvim-lualine/lualine.nvim/
     nvim-navic # Add LSP location to lualine | https://github.com/SmiteshP/nvim-navic
+    nvim-navbuddy
+    nui-nvim
     statuscol-nvim # Status column | https://github.com/luukvbaal/statuscol.nvim/
     nvim-treesitter-context # nvim-treesitter-context
     toggleterm-nvim # https://github.com/akinsho/toggleterm.nvim/
