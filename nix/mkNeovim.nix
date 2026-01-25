@@ -167,7 +167,7 @@ with lib;
         appName != "nvim" && appName != null && appName != ""
       ) ''--set NVIM_APPNAME "${appName}"'')
       # Add external packages to the PATH
-      ++ (optional (externalPackages != []) ''--prefix PATH : "${makeBinPath externalPackages}"'')
+      ++ (optional (externalPackages != []) ''--suffix PATH : "${makeBinPath externalPackages}"'')
       # Set the LIBSQLITE_CLIB_PATH if sqlite is enabled
       ++ (optional withSqlite ''--set LIBSQLITE_CLIB_PATH "${sqlite.out}/lib/libsqlite3.so"'')
       # Set the LIBSQLITE environment variable if sqlite is enabled
