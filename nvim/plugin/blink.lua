@@ -2,6 +2,7 @@ require('blink.cmp').setup {
   completion = {
     ghost_text = {
       enabled = true,
+      show_with_menu = false,
     },
   },
   documentation = {
@@ -12,13 +13,13 @@ require('blink.cmp').setup {
     preset = 'enter',
     ['<Tab>'] = { 'select_next', 'fallback' },
     ['<S-Tab>'] = { 'select_prev', 'fallback' },
+    ['<Up>'] = { 'select_next', 'fallback' },
+    ['<Down>'] = { 'select_prev', 'fallback' },
   },
-  highlight = {
-    use_nvim_cmp_as_default = true,
-  },
-  windows = {
-    autocomplete = {
-      border = 'rounded',
+  signature = {
+    enabled = true,
+    window = {
+      show_documentation = false,
     },
   },
 }
