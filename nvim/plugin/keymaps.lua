@@ -105,7 +105,7 @@ end, { silent = true, desc = '[f]loating windows: [q]uit/close all' })
 
 -- Remap Esc to switch to normal mode and Ctrl-Esc to pass Esc to terminal
 set('t', '<Esc>', '<C-\\><C-n>', { desc = 'switch to normal mode' })
-set('t', '<C-Esc>', '<Esc>', { desc = 'send Esc to terminal' })
+set('t', '<leader><Esc>', '<Esc>', { desc = 'send Esc to terminal' })
 
 -- Remap C-w for movement in terminal mode
 set('t', '<C-w>h', '<C-\\><C-n><C-w>h')
