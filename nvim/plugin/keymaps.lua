@@ -190,7 +190,12 @@ set('n', '<C-b>', '<C-b>zz', { desc = 'move UP full-page and center' })
 set('n', '<leader>x', '<cmd>.lua<CR>', { desc = 'execute the current line' })
 set('n', '<leader><leader>x', '<cmd>source %<CR>', { desc = 'execute the current file' })
 
+-- Oil
 set('n', '<leader>-', ':Oil<CR>', { desc = 'Open parent directory in oil' })
+
+-- Fugitive
+set('v', 'gb', ':GBrowse<CR>', { desc = '[g]it [b]rowse' })
+set('n', '<leader>gb', ':GBrowse<CR>', { desc = '[g]it [b]rowse' })
 
 -- Disabled keymaps [enable at your own risk]
 
