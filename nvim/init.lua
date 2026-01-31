@@ -16,6 +16,11 @@ opt.number = true
 opt.cursorline = true
 opt.lazyredraw = true
 opt.showmatch = true -- Highlight matching parentheses, etc
+
+-- Give some context when jumping, if possible
+opt.scrolloff = 10
+
+-- Case sensitive search, unless not
 opt.incsearch = true
 opt.hlsearch = true
 
