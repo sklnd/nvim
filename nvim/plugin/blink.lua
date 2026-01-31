@@ -13,8 +13,8 @@ require('blink.cmp').setup {
     preset = 'enter',
     ['<Tab>'] = { 'select_next', 'fallback' },
     ['<S-Tab>'] = { 'select_prev', 'fallback' },
-    ['<Up>'] = { 'select_next', 'fallback' },
-    ['<Down>'] = { 'select_prev', 'fallback' },
+    ['<Up>'] = { 'select_prev', 'fallback' },
+    ['<Down>'] = { 'select_next', 'fallback' },
   },
   signature = {
     enabled = true,
