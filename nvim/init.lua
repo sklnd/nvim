@@ -19,6 +19,10 @@ opt.showmatch = true -- Highlight matching parentheses, etc
 opt.incsearch = true
 opt.hlsearch = true
 
+-- Case insensitive search, unless not
+opt.smartcase = true
+opt.ignorecase = true
+
 opt.spell = true
 opt.spelllang = 'en'
 
