@@ -36,6 +36,7 @@ with final.pkgs.lib; let
 
     # Completion
     blink-cmp # https://github.com/Saghen/blink.cmp
+    copilot-vim
 
     # Misc
     snacks-nvim # https://github.com/folke/snacks.nvim
