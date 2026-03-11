@@ -97,7 +97,8 @@ vim.diagnostic.config {
 }
 
 if vim.fn.has('nvim') == 1 then
-  vim.env.JJ_EDITOR = 'nvr -cc split --remote-wait'
+  vim.env.JJ_EDITOR = 'nvr -cc tabedit --remote-wait'
+  vim.env.GIT_EDITOR = 'nvr -cc tabedit --remote-wait'
 end
 
 -- Native plugins
