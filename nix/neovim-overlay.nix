@@ -120,6 +120,7 @@ with final.pkgs.lib; let
     basedpyright # python LSP
     python3
     typescript-language-server
+    neovim-remote # nvr for nested editor support
   ];
 in {
   # This is the neovim derivation
