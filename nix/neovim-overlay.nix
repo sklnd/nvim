@@ -83,7 +83,7 @@ with final.pkgs.lib; let
     # ^ navigation/editing enhancement plugins
 
     # Useful utilities
-    nvim-unception # Prevent nested neovim sessions | nvim-unception
+    #nvim-unception # Prevent nested neovim sessions | nvim-unception
     # ^ Useful utilities
 
     # libraries that other plugins depend on
