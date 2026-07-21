@@ -50,6 +50,7 @@ with final.pkgs.lib; let
     gitsigns-nvim # https://github.com/lewis6991/gitsigns.nvim/
     vim-fugitive # https://github.com/tpope/vim-fugitive/
     vim-rhubarb # https://github.com/tpope/vim-rhubarb
+    jj-nvim # https://github.com/NicolasGB/jj.nvim
     # ^ git integration plugins
 
     # telescope and extensions
