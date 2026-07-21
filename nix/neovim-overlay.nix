@@ -108,9 +108,6 @@ with final.pkgs.lib; let
 
     # Theme
     dracula-nvim
-
-    # Big fancy stuff
-    codecompanion-nvim
   ];
 
   extraPackages = with pkgs; [
