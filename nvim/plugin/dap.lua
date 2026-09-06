@@ -1,7 +1,5 @@
 local dap, dapui = require('dap'), require('dapui')
 
-local dap_vscode = require('dap.ext.vscode')
-
 dapui.setup()
 
 --
