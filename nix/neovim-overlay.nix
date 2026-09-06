@@ -71,6 +71,7 @@ with final.pkgs.lib; let
     trouble-nvim # A pretty list for trouble / quickfix /etx https://github.com/folke/trouble.nvim
     fidget-nvim # UI showing lsp progrss https://github.com/j-hui/fidget.nvim
     actions-preview-nvim # # Code actions preview https://github.com/aznhe21/actions-preview.nvim
+    nvim-lightbulb # Shows lightbulb icons on lines with code actions https://github.com/kosayoda/nvim-lightbulb
     # ^ UI
 
     # language support
