@@ -2,7 +2,7 @@
 
 require('nvim-lightbulb').setup {
   autocmd = { enabled = true },
-  action_kinds = { 'quickfix', 'refactor' },
+  action_kinds = { 'quickfix', 'refactor', 'refactor.extract', 'refactor.inline', 'refactor.rewrite' },
   sign = {
     enabled = true,
   },
