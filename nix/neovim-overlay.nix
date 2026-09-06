@@ -70,6 +70,7 @@ with final.pkgs.lib; let
     toggleterm-nvim # https://github.com/akinsho/toggleterm.nvim/
     trouble-nvim # A pretty list for trouble / quickfix /etx https://github.com/folke/trouble.nvim
     fidget-nvim # UI showing lsp progrss https://github.com/j-hui/fidget.nvim
+    actions-preview-nvim # # Code actions preview https://github.com/aznhe21/actions-preview.nvim
     # ^ UI
 
     # language support
